@@ -168,10 +168,123 @@
 </main>
 </div>
 <footer class="fixed bottom-0 left-0 right-0 bg-[var(--dark-bg)] border-t border-[var(--border-color)] p-4 shadow-top-lg">
-<button class="btn-primary flex w-full items-center justify-center rounded-xl h-14 px-5 text-lg font-semibold tracking-[0.015em] transition-opacity hover:opacity-90">
+<button id="completeWorkoutBtn" class="btn-primary flex w-full items-center justify-center rounded-xl h-14 px-5 text-lg font-semibold tracking-[0.015em] transition-opacity hover:opacity-90">
           Complete Workout
         </button>
 </footer>
 </div>
 
+<script>
+    const completeWorkoutBtn = document.getElementById('completeWorkoutBtn');
+    const exercisesContainer = document.querySelector('main'); // Adjust if exercises are in a more specific container
+
+    // Function to fetch and display the workout program (simplified: assumes program is static for now)
+    // In a real app, this would fetch the user's current or selected program from the backend
+    async function loadWorkoutProgram() {
+        // Example: Fetching a pre-defined program or user's current program
+        // For now, we'll assume the HTML structure is the program.
+        // If AI generates it, we'd dynamically create these exercise blocks.
+        console.log("Workout program page loaded.");
+
+        // Check if user is logged in
+        try {
+            const sessionResponse = await fetch('/api/check_session');
+            const sessionData = await sessionResponse.json();
+            if (!sessionData.logged_in) {
+                window.location.href = 'login.html';
+                return;
+            }
+            // Potentially load user-specific program details here
+            // For example, call /api/ai/generate_program or /api/user/current_program
+
+        } catch (error) {
+            console.error("Error checking session:", error);
+            window.location.href = 'login.html';
+        }
+    }
+
+    completeWorkoutBtn.addEventListener('click', async () => {
+        const workoutLogs = [];
+        const exerciseCards = document.querySelectorAll('.mb-6.rounded-xl.bg-\\[var\\(--card-bg\\)\\]');
+
+        let overallWorkoutName = document.querySelector('h2.py-5')?.textContent.trim() || "General Workout";
+
+        exerciseCards.forEach(card => {
+            const exerciseNameElement = card.querySelector('p.text-\\[var\\(--text-primary\\)\\]'); // More specific selector
+            const setsRepsRirElement = card.querySelector('p.text-\\[var\\(--text-secondary\\)\\]');
+
+            const repsInput = card.querySelector('input[type="number"][placeholder*="Reps"], input[type="text"][placeholder*="Reps"]');
+            const rirInput = card.querySelector('input[type="number"][placeholder*="RIR"]');
+            const weightInput = card.querySelector('input[placeholder*="Weight"]');
+            const notesInput = card.querySelector('textarea[placeholder*="notes"]');
+
+            if (exerciseNameElement && repsInput && rirInput && weightInput && notesInput) {
+                const exerciseName = exerciseNameElement.textContent.trim();
+                // Extract target sets/reps from description, or assume a default
+                let targetSets = 3;
+                let targetReps = "8-12";
+                if(setsRepsRirElement) {
+                    const match = setsRepsRirElement.textContent.match(/(\d+)\s*sets,\s*([\d-]+)\s*reps/i);
+                    if(match){
+                        targetSets = parseInt(match[1]);
+                        targetReps = match[2];
+                    }
+                }
+
+                // For simplicity, we're logging one entry per exercise card.
+                // A more detailed approach would log each set individually if the UI supported it.
+                workoutLogs.push({
+                    exercise_name: exerciseName,
+                    // program_name: overallWorkoutName, // Link to the overall program if saving it
+                    sets_completed: parseInt(repsInput.dataset.sets) || targetSets, // If sets are fixed per exercise
+                    reps_achieved: repsInput.value || targetReps, // Log actual reps
+                    weight_lifted: parseFloat(weightInput.value) || 0,
+                    rir_achieved: parseInt(rirInput.value) || null,
+                    notes: notesInput.value || ""
+                });
+            }
+        });
+
+        if (workoutLogs.length === 0) {
+            alert("No exercises logged. Please fill in your workout details.");
+            return;
+        }
+
+        console.log("Workout Data to Log:", workoutLogs);
+
+        try {
+            const response = await fetch('/api/log_workout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    workout_name: overallWorkoutName, // Or a more specific program name/ID
+                    exercises: workoutLogs
+                }),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Workout completed and logged successfully!');
+                window.location.href = 'Workout_summary.html'; // Redirect to summary page
+            } else {
+                alert(`Error logging workout: ${result.message}`);
+            }
+        } catch (error) {
+            console.error('Error completing workout:', error);
+            alert('An error occurred while logging your workout.');
+        }
+    });
+
+    // Add event listener for the back button
+    const backButton = document.querySelector('header button');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.location.href = 'Dashboard.html'; // Or wherever user came from
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadWorkoutProgram);
+</script>
 </body></html>

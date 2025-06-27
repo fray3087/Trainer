@@ -42,18 +42,18 @@
 <div class="w-12"></div> 
 <h1 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Dashboard</h1>
 <div class="flex w-12 items-center justify-end">
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-[var(--surface-dark)] transition-colors">
-<span class="material-icons text-white">settings</span>
+<button id="logoutButton" class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-[var(--surface-dark)] transition-colors">
+<span class="material-icons text-white">logout</span>
 </button>
 </div>
 </div>
 <div class="flex p-4 @container">
 <div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-start @[520px]:items-center">
-<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24 @[520px]:min-h-28 @[520px]:w-28 border-2 border-[var(--primary-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEpW7gQL3hcCtYna-zBm0zgC9vIAxiGpTdwra-5G5G6bmDVE3UWF8AsdfsWC9u40SQ7njH7ixthXcIpBJTe5n-Al8DF7zQnOECt0sDn9wZpc2vvtXPuXeizVahSvYI9Y81LLtdve_zbfxomUHT3CZFyobQ0nAxYTTnZmWPgxljF7EwJAifq43k-HcrWk8qjXab_h0LSk60U6qnCQtBHnWPn06FOgqDtJLARasJzUHvO41DR0kCJQLGmT589lsRs-QrcUmDEVBl8HKU");'></div>
+<div id="userProfilePic" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24 @[520px]:min-h-28 @[520px]:w-28 border-2 border-[var(--primary-color)]" style='background-image: url("https://via.placeholder.com/150");'></div>
 <div class="flex flex-col justify-center">
-<p class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Ethan Carter</p>
-<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">Level 3</p>
-<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">300 XP <span class="text-[var(--accent-green)]">to next level</span></p>
+<p id="usernameDisplay" class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">User Name</p>
+<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">Level 1</p>
+<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">0 XP <span class="text-[var(--accent-green)]">to next level</span></p>
 </div>
 </div>
 </div>
@@ -165,7 +165,7 @@
 <span class="material-icons">group</span>
 <p class="text-xs font-medium leading-tight tracking-[0.015em]">Community</p>
 </a>
-<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="#">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="Profile.html">
 <span class="material-icons">person</span>
 <p class="text-xs font-medium leading-tight tracking-[0.015em]">Profile</p>
 </a>
@@ -173,4 +173,42 @@
 </div>
 </div>
 
+<script>
+  const usernameDisplay = document.getElementById('usernameDisplay');
+  const logoutButton = document.getElementById('logoutButton');
+
+  async function fetchUserData() {
+    try {
+      const response = await fetch('/api/check_session');
+      const data = await response.json();
+      if (data.logged_in) {
+        usernameDisplay.textContent = data.username;
+        // You can add more user data display logic here if needed
+      } else {
+        // Not logged in, redirect to login
+        window.location.href = 'login.html';
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      window.location.href = 'login.html'; // Redirect on error as well
+    }
+  }
+
+  logoutButton.addEventListener('click', async () => {
+    try {
+      const response = await fetch('/api/logout', { method: 'POST' });
+      if (response.ok) {
+        window.location.href = 'login.html';
+      } else {
+        console.error('Logout failed');
+        // You could display an error message to the user here
+      }
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  });
+
+  // Fetch user data when the page loads
+  window.addEventListener('DOMContentLoaded', fetchUserData);
+</script>
 </body></html>
