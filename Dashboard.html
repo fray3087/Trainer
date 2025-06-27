@@ -1,0 +1,176 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #e92933;
+        --secondary-text: #a18a8b;--background-dark: #120c0c;--surface-dark: #1f1313;--border-dark: #423031;--card-background: #2a1f1f;--accent-green: #0bda95;
+      }
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-feature-settings: 'liga';
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[var(--background-dark)]" style='font-family: Lexend, "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col dark justify-between group/design-root overflow-x-hidden">
+<div class="flex-grow">
+<div class="flex items-center bg-[var(--background-dark)] p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="w-12"></div> 
+<h1 class="text-white text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Dashboard</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-[var(--surface-dark)] transition-colors">
+<span class="material-icons text-white">settings</span>
+</button>
+</div>
+</div>
+<div class="flex p-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-start @[520px]:items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-24 w-24 @[520px]:min-h-28 @[520px]:w-28 border-2 border-[var(--primary-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBEpW7gQL3hcCtYna-zBm0zgC9vIAxiGpTdwra-5G5G6bmDVE3UWF8AsdfsWC9u40SQ7njH7ixthXcIpBJTe5n-Al8DF7zQnOECt0sDn9wZpc2vvtXPuXeizVahSvYI9Y81LLtdve_zbfxomUHT3CZFyobQ0nAxYTTnZmWPgxljF7EwJAifq43k-HcrWk8qjXab_h0LSk60U6qnCQtBHnWPn06FOgqDtJLARasJzUHvO41DR0kCJQLGmT589lsRs-QrcUmDEVBl8HKU");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Ethan Carter</p>
+<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">Level 3</p>
+<p class="text-[var(--secondary-text)] text-md font-normal leading-normal">300 XP <span class="text-[var(--accent-green)]">to next level</span></p>
+</div>
+</div>
+</div>
+<h2 class="text-white text-xl font-semibold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Progress</h2>
+<div class="grid grid-cols-1 @[400px]:grid-cols-2 gap-4 px-4 py-3">
+<div class="flex min-w-0 flex-1 flex-col gap-3 rounded-xl bg-[var(--card-background)] border border-[var(--border-dark)] p-4">
+<p class="text-white text-lg font-medium leading-normal">Workout Progress</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight truncate">+15%</p>
+<div class="flex gap-1 items-center">
+<p class="text-[var(--secondary-text)] text-sm font-normal leading-normal">Last 30 Days</p>
+<span class="material-icons text-[var(--accent-green)] text-base">trending_up</span>
+<p class="text-[var(--accent-green)] text-sm font-medium leading-normal">+15%</p>
+</div>
+<div class="flex min-h-[150px] flex-1 flex-col gap-4 pt-4">
+<svg fill="none" height="100%" preserveAspectRatio="xMidYMax meet" viewBox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_workout)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="var(--primary-color)" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="paint0_linear_workout" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="var(--primary-color)" stop-opacity="0.5"></stop>
+<stop offset="1" stop-color="var(--primary-color)" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+</svg>
+<div class="flex justify-around">
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W1</p>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W2</p>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W3</p>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W4</p>
+</div>
+</div>
+</div>
+<div class="flex min-w-0 flex-1 flex-col gap-3 rounded-xl bg-[var(--card-background)] border border-[var(--border-dark)] p-4">
+<p class="text-white text-lg font-medium leading-normal">Diet Adherence</p>
+<p class="text-white tracking-light text-3xl font-bold leading-tight truncate">+10%</p>
+<div class="flex gap-1 items-center">
+<p class="text-[var(--secondary-text)] text-sm font-normal leading-normal">Last 30 Days</p>
+<span class="material-icons text-[var(--accent-green)] text-base">trending_up</span>
+<p class="text-[var(--accent-green)] text-sm font-medium leading-normal">+10%</p>
+</div>
+<div class="grid min-h-[150px] grid-flow-col gap-3 grid-rows-[1fr_auto] items-end justify-items-center px-2 pt-4">
+<div class="bg-[var(--primary-color)] opacity-75 rounded-t-sm w-full" style="height: 60%;"></div>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W1</p>
+<div class="bg-[var(--primary-color)] opacity-75 rounded-t-sm w-full" style="height: 80%;"></div>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W2</p>
+<div class="bg-[var(--primary-color)] opacity-75 rounded-t-sm w-full" style="height: 10%;"></div>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W3</p>
+<div class="bg-[var(--primary-color)] opacity-75 rounded-t-sm w-full" style="height: 80%;"></div>
+<p class="text-[var(--secondary-text)] text-xs font-medium leading-normal tracking-[0.015em]">W4</p>
+</div>
+</div>
+</div>
+<h2 class="text-white text-xl font-semibold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Goals</h2>
+<div class="flex flex-col divide-y divide-[var(--border-dark)]">
+<div class="flex items-center gap-4 bg-[var(--background-dark)] px-4 py-3 justify-between hover:bg-[var(--surface-dark)] transition-colors">
+<div class="flex items-center gap-3">
+<div class="text-white flex items-center justify-center rounded-lg bg-[var(--card-background)] shrink-0 size-10">
+<span class="material-icons text-[var(--primary-color)]">fitness_center</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-md font-medium leading-normal line-clamp-1">Bench Press</p>
+<p class="text-[var(--secondary-text)] text-sm font-normal leading-normal line-clamp-1">Target: 100kg</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-white text-md font-medium leading-normal">90kg</p></div>
+</div>
+<div class="flex items-center gap-4 bg-[var(--background-dark)] px-4 py-3 justify-between hover:bg-[var(--surface-dark)] transition-colors">
+<div class="flex items-center gap-3">
+<div class="text-white flex items-center justify-center rounded-lg bg-[var(--card-background)] shrink-0 size-10">
+<span class="material-icons text-[var(--primary-color)]">fitness_center</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-md font-medium leading-normal line-clamp-1">Squat</p>
+<p class="text-[var(--secondary-text)] text-sm font-normal leading-normal line-clamp-1">Target: 120kg</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-white text-md font-medium leading-normal">110kg</p></div>
+</div>
+<div class="flex items-center gap-4 bg-[var(--background-dark)] px-4 py-3 justify-between hover:bg-[var(--surface-dark)] transition-colors">
+<div class="flex items-center gap-3">
+<div class="text-white flex items-center justify-center rounded-lg bg-[var(--card-background)] shrink-0 size-10">
+<span class="material-icons text-[var(--primary-color)]">fitness_center</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-white text-md font-medium leading-normal line-clamp-1">Deadlift</p>
+<p class="text-[var(--secondary-text)] text-sm font-normal leading-normal line-clamp-1">Target: 150kg</p>
+</div>
+</div>
+<div class="shrink-0"><p class="text-white text-md font-medium leading-normal">140kg</p></div>
+</div>
+</div>
+<div class="pb-24"></div> 
+</div>
+<div class="fixed bottom-0 left-0 right-0">
+<div class="flex gap-1 border-t border-[var(--border-dark)] bg-[var(--surface-dark)] px-2 pt-2 pb-3 shadow-top">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-md text-[var(--primary-color)] py-1" href="#">
+<span class="material-icons text-[var(--primary-color)]">dashboard</span>
+<p class="text-[var(--primary-color)] text-xs font-medium leading-tight tracking-[0.015em]">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="#">
+<span class="material-icons">fitness_center</span>
+<p class="text-xs font-medium leading-tight tracking-[0.015em]">Workouts</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="#">
+<span class="material-icons">restaurant_menu</span>
+<p class="text-xs font-medium leading-tight tracking-[0.015em]">Diet</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="#">
+<span class="material-icons">group</span>
+<p class="text-xs font-medium leading-tight tracking-[0.015em]">Community</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--secondary-text)] hover:text-white py-1 rounded-md transition-colors" href="#">
+<span class="material-icons">person</span>
+<p class="text-xs font-medium leading-tight tracking-[0.015em]">Profile</p>
+</a>
+</div>
+</div>
+</div>
+
+</body></html>
