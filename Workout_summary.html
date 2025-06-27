@@ -1,0 +1,146 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #e92933;
+        --secondary-color: #2C2C2E;
+        --accent-color: #3A3A3C;
+        --text-primary: #FFFFFF;
+        --text-secondary: #AEAEB2;
+        --background-color: #1C1C1E;
+        --border-color: #38383A;
+      }
+      body {
+        font-family: 'Lexend', "Noto Sans", sans-serif;
+      }
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;-moz-osx-font-smoothing: grayscale;font-feature-settings: 'liga';}
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+<div class="relative flex size-full min-h-screen flex-col dark justify-between group/design-root overflow-x-hidden">
+<div class="flex-grow">
+<header class="sticky top-0 z-10 bg-[var(--background-color)]/80 backdrop-blur-md">
+<div class="flex items-center p-4 justify-between border-b border-[var(--border-color)]">
+<button class="text-[var(--primary-color)] flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-[var(--accent-color)] transition-colors">
+<span class="material-icons">arrow_back_ios_new</span>
+</button>
+<h1 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-tight flex-1 text-center pr-10">Workout Summary</h1>
+</div>
+</header>
+<main class="p-4 space-y-6">
+<section>
+<h2 class="text-[var(--text-primary)] text-2xl font-semibold leading-tight tracking-tight px-1 pb-4 pt-2">Workout Recap</h2>
+<div class="grid grid-cols-1 @sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-[var(--secondary-color)] border border-[var(--border-color)] shadow-lg">
+<p class="text-[var(--text-secondary)] text-sm font-medium leading-normal">Total Workouts</p>
+<p class="text-[var(--primary-color)] tracking-tight text-3xl font-bold leading-tight">12</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-[var(--secondary-color)] border border-[var(--border-color)] shadow-lg">
+<p class="text-[var(--text-secondary)] text-sm font-medium leading-normal">Avg. Duration</p>
+<p class="text-[var(--primary-color)] tracking-tight text-3xl font-bold leading-tight">65<span class="text-xl"> min</span></p>
+</div>
+<div class="col-span-1 @sm:col-span-2 flex flex-col gap-2 rounded-xl p-5 bg-[var(--secondary-color)] border border-[var(--border-color)] shadow-lg">
+<p class="text-[var(--text-secondary)] text-sm font-medium leading-normal">Total Volume Lifted</p>
+<p class="text-[var(--primary-color)] tracking-tight text-3xl font-bold leading-tight">15,000<span class="text-xl"> kg</span></p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-[var(--text-primary)] text-2xl font-semibold leading-tight tracking-tight px-1 pb-4 pt-3">Workout Log</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-4 bg-[var(--secondary-color)] p-4 rounded-xl border border-[var(--border-color)] shadow-md hover:bg-[var(--accent-color)] transition-colors cursor-pointer">
+<div class="bg-[var(--primary-color)] rounded-lg p-3 flex items-center justify-center">
+<span class="material-icons text-white">fitness_center</span>
+</div>
+<div class="flex-grow">
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal line-clamp-1">Workout 12</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal line-clamp-1">Chest &amp; Triceps</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-[var(--text-primary)] text-base font-medium leading-normal">60 min</p>
+<p class="text-[var(--text-secondary)] text-xs font-normal">Today</p>
+</div>
+<span class="material-icons text-[var(--text-secondary)]">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 bg-[var(--secondary-color)] p-4 rounded-xl border border-[var(--border-color)] shadow-md hover:bg-[var(--accent-color)] transition-colors cursor-pointer">
+<div class="bg-gray-700 rounded-lg p-3 flex items-center justify-center">
+<span class="material-icons text-white">fitness_center</span>
+</div>
+<div class="flex-grow">
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal line-clamp-1">Workout 11</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal line-clamp-1">Back &amp; Biceps</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-[var(--text-primary)] text-base font-medium leading-normal">70 min</p>
+<p class="text-[var(--text-secondary)] text-xs font-normal">Yesterday</p>
+</div>
+<span class="material-icons text-[var(--text-secondary)]">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 bg-[var(--secondary-color)] p-4 rounded-xl border border-[var(--border-color)] shadow-md hover:bg-[var(--accent-color)] transition-colors cursor-pointer">
+<div class="bg-gray-700 rounded-lg p-3 flex items-center justify-center">
+<span class="material-icons text-white">fitness_center</span>
+</div>
+<div class="flex-grow">
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal line-clamp-1">Workout 10</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal line-clamp-1">Legs &amp; Shoulders</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-[var(--text-primary)] text-base font-medium leading-normal">55 min</p>
+<p class="text-[var(--text-secondary)] text-xs font-normal">2 days ago</p>
+</div>
+<span class="material-icons text-[var(--text-secondary)]">chevron_right</span>
+</div>
+</div>
+<div class="text-center pt-4">
+<button class="text-[var(--primary-color)] text-sm font-medium py-2 px-4 rounded-lg hover:bg-[var(--accent-color)] transition-colors">
+                    View More
+                </button>
+</div>
+</section>
+</main>
+</div>
+<footer class="sticky bottom-0 bg-[var(--secondary-color)]/90 backdrop-blur-md border-t border-[var(--border-color)]">
+<nav class="flex justify-around items-center px-2 pt-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)]">
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<span class="material-icons text-2xl">home</span>
+<p class="text-xs font-medium tracking-tight">Home</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--primary-color)] w-1/4 py-1" href="#">
+<span class="material-icons text-2xl">fitness_center</span>
+<p class="text-xs font-bold tracking-tight">Workouts</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<span class="material-icons text-2xl">show_chart</span>
+<p class="text-xs font-medium tracking-tight">Progress</p>
+</a>
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<span class="material-icons text-2xl">person</span>
+<p class="text-xs font-medium tracking-tight">Profile</p>
+</a>
+</nav>
+</footer>
+</div>
+
+</body></html>
