@@ -114,7 +114,7 @@
 </div>
 </div>
 <div class="text-center pt-4">
-<button class="text-[var(--primary-color)] text-sm font-medium py-2 px-4 rounded-lg hover:bg-[var(--accent-color)] transition-colors">
+<button id="viewMoreBtn" class="text-[var(--primary-color)] text-sm font-medium py-2 px-4 rounded-lg hover:bg-[var(--accent-color)] transition-colors">
                     View More
                 </button>
 </div>
@@ -123,24 +123,99 @@
 </div>
 <footer class="sticky bottom-0 bg-[var(--secondary-color)]/90 backdrop-blur-md border-t border-[var(--border-color)]">
 <nav class="flex justify-around items-center px-2 pt-2 pb-[calc(env(safe-area-inset-bottom,0px)+0.5rem)]">
-<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="Dashboard.html">
 <span class="material-icons text-2xl">home</span>
 <p class="text-xs font-medium tracking-tight">Home</p>
 </a>
-<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--primary-color)] w-1/4 py-1" href="#">
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="Workout_program.html"> <!-- Link to workout program or a page to start a new one -->
 <span class="material-icons text-2xl">fitness_center</span>
-<p class="text-xs font-bold tracking-tight">Workouts</p>
+<p class="text-xs font-medium tracking-tight">Workouts</p> <!-- Corrected: This should be secondary text color if "Progress" is active -->
 </a>
-<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--primary-color)] w-1/4 py-1" href="Workout_summary.html"> <!-- Current page, so it's primary color -->
 <span class="material-icons text-2xl">show_chart</span>
-<p class="text-xs font-medium tracking-tight">Progress</p>
+<p class="text-xs font-bold tracking-tight">Progress</p>
 </a>
-<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="#">
+<a class="flex flex-col items-center justify-end gap-0.5 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors w-1/4 py-1" href="Profile.html">
 <span class="material-icons text-2xl">person</span>
 <p class="text-xs font-medium tracking-tight">Profile</p>
 </a>
 </nav>
 </footer>
 </div>
+<script>
+    const totalWorkoutsEl = document.querySelector('.flex.flex-col.gap-2.rounded-xl.p-5 .text-\\[var\\(--primary-color\\)\\]');
+    const avgDurationEl = document.querySelectorAll('.flex.flex-col.gap-2.rounded-xl.p-5 .text-\\[var\\(--primary-color\\)\\]')[1];
+    const totalVolumeEl = document.querySelectorAll('.flex.flex-col.gap-2.rounded-xl.p-5 .text-\\[var\\(--primary-color\\)\\]')[2];
+    const workoutLogContainer = document.querySelector('.space-y-3');
+    const viewMoreBtn = document.getElementById('viewMoreBtn');
 
+    async function loadWorkoutSummary() {
+        try {
+            const sessionResponse = await fetch('/api/check_session');
+            const sessionData = await sessionResponse.json();
+            if (!sessionData.logged_in) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const summaryResponse = await fetch('/api/workout_summary');
+            if (!summaryResponse.ok) {
+                console.error("Failed to load workout summary");
+                workoutLogContainer.innerHTML = '<p class="text-center text-[var(--text-secondary)]">Could not load workout summary.</p>';
+                return;
+            }
+            const summaryData = await summaryResponse.json();
+
+            if(totalWorkoutsEl) totalWorkoutsEl.textContent = summaryData.total_workouts || 0;
+            if(avgDurationEl) avgDurationEl.innerHTML = `${summaryData.avg_duration_minutes || 0}<span class="text-xl"> min</span>`;
+            if(totalVolumeEl) totalVolumeEl.innerHTML = `${summaryData.total_volume_lifted || 0}<span class="text-xl"> kg</span>`;
+
+            workoutLogContainer.innerHTML = ''; // Clear existing static logs
+
+            if (summaryData.recent_workout_logs && summaryData.recent_workout_logs.length > 0) {
+                summaryData.recent_workout_logs.forEach(log => {
+                    const logElement = `
+                        <div class="flex items-center gap-4 bg-[var(--secondary-color)] p-4 rounded-xl border border-[var(--border-color)] shadow-md hover:bg-[var(--accent-color)] transition-colors cursor-pointer">
+                            <div class="bg-${log.program_name && log.program_name.toLowerCase().includes("chest") ? '[var(--primary-color)]' : 'gray-700'} rounded-lg p-3 flex items-center justify-center">
+                                <span class="material-icons text-white">fitness_center</span>
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-[var(--text-primary)] text-base font-semibold leading-normal line-clamp-1">${log.program_name || log.exercise_name}</p>
+                                <p class="text-[var(--text-secondary)] text-sm font-normal leading-normal line-clamp-1">${log.details}</p>
+                            </div>
+                            <div class="shrink-0 text-right">
+                                <p class="text-[var(--text-primary)] text-base font-medium leading-normal">${log.date.split(' ')[1]}</p> <!-- Time -->
+                                <p class="text-[var(--text-secondary)] text-xs font-normal">${log.date.split(' ')[0]}</p> <!-- Date -->
+                            </div>
+                            <span class="material-icons text-[var(--text-secondary)]">chevron_right</span>
+                        </div>`;
+                    workoutLogContainer.innerHTML += logElement;
+                });
+            } else {
+                workoutLogContainer.innerHTML = '<p class="text-center text-[var(--text-secondary)]">No workouts logged yet. Go crush one!</p>';
+            }
+
+        } catch (error) {
+            console.error("Error loading workout summary:", error);
+            workoutLogContainer.innerHTML = '<p class="text-center text-[var(--text-secondary)]">An error occurred while loading summary.</p>';
+        }
+    }
+
+    // Back button functionality
+    const backButton = document.querySelector('header button');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.location.href = 'Dashboard.html'; // Or use window.history.back();
+        });
+    }
+
+    if(viewMoreBtn) {
+        viewMoreBtn.addEventListener('click', () => {
+            // TODO: Implement pagination or link to a page with all workout logs
+            alert("View More functionality to be implemented.");
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadWorkoutSummary);
+</script>
 </body></html>

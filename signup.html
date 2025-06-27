@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://cdn.tailwindcss.com?plugins=forms,container-queries" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #e92933;
+            --secondary-color: #382929;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B89D9F;
+            --background-color: #181111;
+        }
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="relative flex flex-col w-full max-w-md px-6 py-8">
+        <div class="flex items-center justify-center mb-10">
+            <h1 class="text-3xl font-bold leading-tight tracking-tight text-center">
+                Create Account
+            </h1>
+        </div>
+        <div class="space-y-6">
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+                    person
+                </span>
+                <input id="username" class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Username" type="text" value=""/>
+            </div>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+                    email
+                </span>
+                <input id="email" class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Email" type="email" value=""/>
+            </div>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+                    lock
+                </span>
+                <input id="password" class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Password" type="password" value=""/>
+            </div>
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+                    lock
+                </span>
+                <input id="confirmPassword" class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Confirm Password" type="password" value=""/>
+            </div>
+        </div>
+        <button id="signupButton" class="mt-10 flex w-full cursor-pointer items-center justify-center rounded-xl h-14 px-5 bg-[var(--primary-color)] text-[var(--text-primary)] text-lg font-semibold leading-normal tracking-wide hover:bg-opacity-90 transition-colors duration-200">
+            <span class="truncate">Sign Up</span>
+        </button>
+        <p id="errorMessage" class="mt-4 text-sm text-center text-red-500"></p>
+        <div class="mt-6 text-center">
+            <p class="text-[var(--text-secondary)] text-base font-normal">
+                Already have an account?
+                <a class="font-semibold text-[var(--primary-color)] hover:underline" href="login.html">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const signupButton = document.getElementById('signupButton');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorMessageElement = document.getElementById('errorMessage');
+
+        signupButton.addEventListener('click', async () => {
+            const username = usernameInput.value;
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            errorMessageElement.textContent = '';
+
+            if (!username || !email || !password || !confirmPassword) {
+                errorMessageElement.textContent = 'Please fill in all fields.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessageElement.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    console.log('Registration successful:', data);
+                    // Redirect to login page or directly to dashboard after registration
+                    window.location.href = 'login.html';
+                } else {
+                    errorMessageElement.textContent = data.message || 'Registration failed. Please try again.';
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                errorMessageElement.textContent = 'An error occurred during registration. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
