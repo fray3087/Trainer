@@ -1,0 +1,129 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #e92933;
+        --secondary-color: #382929;--accent-color: #533c3d;--text-primary: #FFFFFF;
+        --text-secondary: #b89d9f;
+        --background-dark: #181111;
+        --background-nav: #261c1c;
+      }
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;-webkit-font-smoothing: antialiased;text-rendering: optimizeLegibility;-moz-osx-font-smoothing: grayscale;font-feature-settings: 'liga';
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[var(--background-dark)]" style='font-family: Lexend, "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden">
+<div class="flex-grow">
+<header class="flex items-center bg-[var(--background-dark)] p-4 pb-2 justify-between sticky top-0 z-10 border-b border-[var(--secondary-color)]">
+<button class="text-[var(--text-primary)]">
+<span class="material-icons">arrow_back_ios_new</span>
+</button>
+<h1 class="text-[var(--text-primary)] text-xl font-bold leading-tight tracking-tight flex-1 text-center">Profile</h1>
+<button class="text-[var(--text-primary)]">
+<span class="material-icons">edit</span>
+</button>
+</header>
+<main class="p-4 @container">
+<section class="flex flex-col items-center mb-8">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 mb-4 border-2 border-[var(--primary-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIUi0S1B2GlFfHQVXSV9q3VChbT9-FumuMNjV-Mal6y0RMZ42iP1P1XjmTp9wzGSK9bAGKuMfRFRfqFD0DNg54OL-PAo0Zd4EJ5UMv3j_Ie1zkQwyxDIaAangXnDO-8Ur4TruzzDvtc1N3-eaCqZBRI8KkjraS3U9EI7GpOwYexQl3LIcqnVRQwjuIsORh5vekJkUsv0OQRJshRIcKheH9wO3uGdxB4-QH_QfE7AX8xXiSJtz7zuhMcA9CtuQjH4SsdfPh5SPuyR98");'></div>
+<div class="text-center">
+<p class="text-[var(--text-primary)] text-2xl font-bold leading-tight tracking-tight">Ethan Carter</p>
+<p class="text-[var(--text-secondary)] text-base font-normal leading-normal">Bodybuilder</p>
+</div>
+</section>
+<section class="mb-8">
+<h2 class="text-[var(--text-primary)] text-lg font-semibold leading-tight tracking-tight px-4 pb-3 pt-4">Training Goals</h2>
+<div class="bg-[var(--background-nav)] rounded-lg shadow-md">
+<div class="grid grid-cols-[auto_1fr] gap-x-4 items-center border-b border-[var(--accent-color)] p-4">
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal">Goal</p>
+<p class="text-[var(--text-primary)] text-sm font-medium leading-normal text-right">Muscle Gain</p>
+</div>
+<div class="grid grid-cols-[auto_1fr] gap-x-4 items-center border-b border-[var(--accent-color)] p-4">
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal">Training Frequency</p>
+<p class="text-[var(--text-primary)] text-sm font-medium leading-normal text-right">4 times a week</p>
+</div>
+<div class="grid grid-cols-[auto_1fr] gap-x-4 items-center p-4">
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal">Training Level</p>
+<p class="text-[var(--text-primary)] text-sm font-medium leading-normal text-right">Advanced</p>
+</div>
+</div>
+</section>
+<section>
+<h2 class="text-[var(--text-primary)] text-lg font-semibold leading-tight tracking-tight px-4 pb-3 pt-4">Body Measurements</h2>
+<div class="bg-[var(--background-nav)] rounded-lg shadow-md p-2">
+<div class="grid grid-cols-2 gap-2">
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Waist</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">32 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Hips</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">40 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Shoulders</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">48 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Chest</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">44 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Arms</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">16 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+<div class="flex flex-col gap-1 border border-[var(--accent-color)] rounded-md p-3">
+<p class="text-[var(--text-secondary)] text-xs font-normal leading-normal">Legs</p>
+<p class="text-[var(--text-primary)] text-base font-semibold leading-normal">24 <span class="text-xs text-[var(--text-secondary)]">inches</span></p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<footer class="sticky bottom-0 z-10">
+<nav class="flex gap-2 border-t border-[var(--secondary-color)] bg-[var(--background-nav)] px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors" href="#">
+<span class="material-icons">home</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors" href="#">
+<span class="material-icons">fitness_center</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Workout</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors" href="#">
+<span class="material-icons">show_chart</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Progress</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--primary-color)]" href="#">
+<span class="material-icons text-[var(--primary-color)]">person</span>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Profile</p>
+</a>
+</nav>
+<div class="h-5 bg-[var(--background-nav)]"></div>
+</footer>
+</div>
+
+</body></html>
