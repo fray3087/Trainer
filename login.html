@@ -1,0 +1,74 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Lexend%3Awght%40300%3B400%3B500%3B600%3B700&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #e92933;
+        --secondary-color: #382929;
+        --text-primary: #FFFFFF;
+        --text-secondary: #B89D9F;
+        --background-color: #181111;
+      }
+      body {
+        font-family: 'Lexend', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[var(--background-color)] dark">
+<div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden">
+<div class="flex flex-col px-6 pt-8 sm:pt-12">
+<div class="flex items-center justify-center mb-12">
+<h1 class="text-[var(--text-primary)] text-3xl font-bold leading-tight tracking-tight text-center">
+            Welcome Back
+          </h1>
+</div>
+<div class="space-y-6">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+              person
+            </span>
+<input class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Username" type="text" value=""/>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] text-xl">
+              lock
+            </span>
+<input class="form-input w-full rounded-xl border-none bg-[var(--secondary-color)] h-16 pl-12 pr-4 text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:ring-2 focus:ring-[var(--primary-color)] text-base font-medium" placeholder="Password" type="password" value=""/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-secondary)]" type="button">
+<span class="material-symbols-outlined text-xl">
+                visibility_off
+              </span>
+</button>
+</div>
+</div>
+<button class="mt-10 flex w-full cursor-pointer items-center justify-center rounded-xl h-14 px-5 bg-[var(--primary-color)] text-[var(--text-primary)] text-lg font-semibold leading-normal tracking-wide hover:bg-opacity-90 transition-colors duration-200">
+<span class="truncate">Login</span>
+</button>
+<a class="mt-4 text-sm text-center text-[var(--text-secondary)] hover:text-[var(--primary-color)] transition-colors duration-200" href="#">Forgot Password?</a>
+</div>
+<div class="pb-8 pt-4 px-6">
+<p class="text-[var(--text-secondary)] text-base font-normal text-center">
+          Don't have an account?
+          <a class="font-semibold text-[var(--primary-color)] hover:underline" href="#">Sign Up</a>
+</p>
+</div>
+</div>
+
+</body></html>
